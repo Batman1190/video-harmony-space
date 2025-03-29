@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -16,16 +15,13 @@ const Index = () => {
   const [dailymotionResults, setDailymotionResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
 
-  // This would normally fetch real data from the YouTube and Dailymotion APIs
   const handleSearch = () => {
     if (!searchQuery.trim()) return;
     
     setIsSearching(true);
     console.log("Searching for:", searchQuery);
     
-    // Simulate API calls with mock data
     setTimeout(() => {
-      // Mock YouTube results
       setYoutubeResults([
         {
           id: "yt1",
@@ -61,7 +57,6 @@ const Index = () => {
         }
       ]);
       
-      // Mock Dailymotion results
       setDailymotionResults([
         {
           id: "dm1",
@@ -103,14 +98,13 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
       <header className="bg-gradient-to-r from-red-600 to-red-800 text-white p-4 md:p-6">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0 flex items-center">
               <h1 className="text-2xl md:text-3xl font-bold">
                 <span className="text-white">My</span>
-                <span className="text-yellow-300">Tube.Space</span>
+                <span className="text-red-600">Tube.Space</span>
               </h1>
               <div className="ml-4 flex space-x-2">
                 <a 
@@ -139,7 +133,6 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Search Bar */}
       <div className="sticky top-0 z-10 bg-white dark:bg-gray-900 shadow-md">
         <div className="container mx-auto p-4">
           <div className="flex">
@@ -163,23 +156,19 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Main Content */}
       <main className="flex-1 container mx-auto p-4">
-        {/* Featured Video */}
         <FeaturedVideo 
           title="Featured Video of the Week: QUEEN OF TEARS"
           description="Chaebol heiress and husband rediscover love through illness and hardships."
           embedUrl="https://www.dailymotion.com/embed/playlist/x8attq?mute=1"
         />
 
-        {/* Video Results */}
         <Tabs defaultValue="youtube" className="my-8">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="youtube">YouTube Results</TabsTrigger>
             <TabsTrigger value="dailymotion">Dailymotion Results</TabsTrigger>
           </TabsList>
           
-          {/* YouTube Tab */}
           <TabsContent value="youtube">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
               {youtubeResults.length > 0 ? (
@@ -206,7 +195,6 @@ const Index = () => {
             </div>
           </TabsContent>
           
-          {/* Dailymotion Tab */}
           <TabsContent value="dailymotion">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
               {dailymotionResults.length > 0 ? (
@@ -234,14 +222,12 @@ const Index = () => {
           </TabsContent>
         </Tabs>
 
-        {/* News Section */}
         <NewsSection 
           title="Latest News from GMA"
           embedUrl="https://www.youtube.com/embed/videoseries?list=PLCpdvYcv59AhPuMparH_AmXGrMy5Q-V1a"
         />
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );
